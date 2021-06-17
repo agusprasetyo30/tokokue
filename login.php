@@ -1,5 +1,6 @@
 <?php
-  $title = "Login";
+  $title = "Login Area";
+  $header_center = true;
 ?>
 
 

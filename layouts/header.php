@@ -27,6 +27,15 @@
    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
    <link rel="stylesheet" href="css/style.css" type="text/css">
+
+   <style>
+      .foto:hover {
+         transition: 0.4s all;
+         padding: 1.25rem 0.25rem 1.25rem 0.25rem;
+      }
+
+      
+   </style>
    </head>
 
    <body>
@@ -55,6 +64,7 @@
       <div class="container">
          <div class="row">
          <div class="col-lg-12">
+         
             <nav class="header__menu mobile-menu">
                <ul>
                   <li class="<?= basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : '' ?>"><a href="./index.php"><i class="fa fa-home"></i> Home</a></li>
@@ -77,6 +87,7 @@
       <div class="container">
          <div class="row text-center">
          <div class="col-lg-12 col-md-12 col-sm-12">
-            <div class="breadcrumb__text mb-3">
+            <!-- Untuk memposisikan lokasi dari header sesuai keinginan -->
+            <div class="breadcrumb__text mb-3 <?= $header_center == true ? 'text-center' : 'text-left' ?>">
                <h2><?= $title != null ? $title : 'No Title Yet' ?></h2>
             </div>

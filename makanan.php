@@ -1,63 +1,79 @@
 <?php
+  include('./data/function.php');
 
-//Harga makanan
-function harga_klepon()
-{
-    include "db.php";
-    $klepon = mysqli_query($con, "
-           SELECT * from makanan where id_makanan = 1
-          ");
-    $rows = [];
-    while ($row = mysqli_fetch_assoc($klepon)) {
-        $rows[] = $row;
-    }
-    $diskon = 0.1;
-    $hargadiskon = $rows[0]['harga'] * $diskon;
-    $harga = $rows[0]['harga'] - $hargadiskon;
-    echo ($harga);
-}
-function harga_kuelumpur()
-{
-    include "db.php";
-    $kuelumpur = mysqli_query($con, "
-          SELECT makanan.harga from makanan where id_makanan = 2
-         ");
-    $rows = [];
-    while ($row = mysqli_fetch_assoc($kuelumpur)) {
-        $rows[] = $row;
-    }
-    $diskon = 0.2;
-    $hargadiskon = $rows[0]['harga'] * $diskon;
-    $harga = $rows[0]['harga'] - $hargadiskon;
-    echo ($harga);
-}
-function harga_kueserabi()
-{
-    include "db.php";
-    $kueserabi = mysqli_query($con, "
-        SELECT makanan.harga from makanan where id_makanan = 3
-       ");
-    $rows = [];
-    while ($row = mysqli_fetch_assoc($kueserabi)) {
-        $rows[] = $row;
-    }
-    $diskon = 0.05;
-    $hargadiskon = $rows[0]['harga'] * $diskon;
-    $harga = $rows[0]['harga'] - $hargadiskon;
-    echo ($harga);
-}
-function harga_pukis()
-{
-    include "db.php";
-    $pukis = mysqli_query($con, "
-        SELECT makanan.harga from makanan where id_makanan = 4
-       ");
-    $rows = [];
-    while ($row = mysqli_fetch_assoc($pukis)) {
-        $rows[] = $row;
-    }
-    $diskon = 0.05;
-    $hargadiskon = $rows[0]['harga'] * $diskon;
-    $harga = $rows[0]['harga'] - $hargadiskon;
-    echo ($harga);
-}
+  $title = "Makanan";
+
+//   $data_pengguna = pagination(5, "SELECT * FROM users");
+?>
+
+
+<?php include_once('./layouts/header.php') ?>
+
+<div class="row">
+   <div class="col-md-3">
+      <div class="card">
+         <div class="card-body foto">
+            <a href="#">
+               <img src="./img/icecream1.jpg" width="100%" height="250px" class="img-rounded">
+               <div class="text-center m-2 text-dark">
+                  Ini Es Kerim
+               </div>
+               <div class="input-group-btn">
+                  <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+                  <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete</a>
+               </div>
+            </a>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-3">
+      <div class="card">
+         <div class="card-body foto">
+            <a href="#">
+               <img src="./img/icecream1.jpg" width="100%" height="250px" class="img-rounded">
+               <div class="text-center m-2 text-dark">
+                  Ini Es Kerim
+               </div>
+               <div class="input-group-btn">
+                  <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+                  <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete</a>
+               </div>
+            </a>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-3">
+      <div class="card">
+         <div class="card-body foto">
+            <a href="#">
+               <img src="./img/icecream1.jpg" width="100%" height="250px" class="img-rounded">
+               <div class="text-center m-2 text-dark">
+                  Ini Es Kerim
+               </div>
+               <div class="input-group-btn">
+                  <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+                  <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete</a>
+               </div>
+            </a>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-3">
+      <div class="card">
+         <div class="card-body foto">
+            <a href="#">
+               <img src="./img/icecream1.jpg" width="100%" height="250px" class="img-rounded">
+               <div class="text-center m-2 text-dark">
+                  Ini Es Kerim
+               </div>
+               <div class="input-group-btn">
+                  <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+                  <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete</a>
+               </div>
+            </a>
+         </div>
+      </div>
+   </div>
+</div>
+
+<?php include_once('./layouts/footer.php') ?>

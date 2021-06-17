@@ -1,8 +1,8 @@
 <?php
-  include('./data/function.php');
+   include('./data/function.php');
 
-  $title = "Tambah Pengguna";
-
+   $title = "Tambah Pengguna";
+   $header_center = true;
 ?>
 
 
