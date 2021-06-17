@@ -23,9 +23,6 @@
             <div class="form-group text-right">
               <input type="submit" name="submit" value="Login" class="btn btn-success"/>
             </div>
-
-            <p>Belum Terdaftar ? <a class="text-primary" href='daftar.php'>Daftar</a></p>
-
           </form>
         </div>
       </div>

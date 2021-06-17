@@ -57,11 +57,11 @@
          <div class="col-lg-12">
             <nav class="header__menu mobile-menu">
                <ul>
-                  <li class="active"><a href="./index.php"><i class="fa fa-home"></i> Home</a></li>
-                  <li><a href="./about.php"><i class="fa fa-book"></i> About</a></li>
-                  <li><a href="./blog.php"><i class="fa fa-pencil"></i> Blog</a></li>
-                  <li><a href="./blog.php"><i class="fa fa-user"></i> Pengguna</a></li>
-                  <li><a href="./blog.php"><i class="fa fa-spoon"></i> Makanan</a></li>
+                  <li class="<?= basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : '' ?>"><a href="./index.php"><i class="fa fa-home"></i> Home</a></li>
+                  <li class="<?= basename($_SERVER['PHP_SELF']) == 'about.php' ? 'active' : '' ?>"><a href="./about.php"><i class="fa fa-book"></i> About</a></li>
+                  <li class="<?= basename($_SERVER['PHP_SELF']) == 'blog.php' ? 'active' : '' ?>"><a href="./blog.php"><i class="fa fa-pencil"></i> Blog</a></li>
+                  <li class="<?= basename($_SERVER['PHP_SELF']) == 'pengguna.php' ? ' active' : '' ?>"><a href="./pengguna.php"><i class="fa fa-user"></i> Pengguna</a></li>
+                  <li class="<?= basename($_SERVER['PHP_SELF']) == 'makanan.php' ? 'active' : '' ?>"><a href="./makanan.php"><i class="fa fa-spoon"></i> Makanan</a></li>
                </ul>
             </nav>
          </div>
