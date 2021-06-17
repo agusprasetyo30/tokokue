@@ -1,8 +1,10 @@
 <?php
+  include './data/function.php';
+
   // $title untuk mengisi title data pada layout
   $title = "Register";
-  // $breadcrumb = true;
 
+  // $breadcrumb = true;
 ?>
 
 <?php include_once('./layouts/header.php') ?>
@@ -31,4 +33,8 @@
     </div>
   </div>
 
-<?php include_once('./layouts/footer.php') ?>
+<?php 
+  include_once('./layouts/footer.php') 
+
+
+?>

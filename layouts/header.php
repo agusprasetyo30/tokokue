@@ -43,9 +43,8 @@
                   <a href="./index.php"><img src="img/logokue.png" alt=""></a>
                </div>
                   <div class="float-right">
-                     <a href="#" class="btn btn-warning">Login</a>
-                     <a href="#" class="btn btn-warning">Register</a>
-                     <a href="#" class="btn btn-warning">Logout</a>
+                     <a href="./login.php" class="btn btn-outline-warning text-dark"><i class="fa fa-sign-in"></i> Login</a>
+                     <a href="#" class="btn btn-outline-warning text-dark" ><i class="fa fa-sign-out"></i> Logout</a>
                   </div>
                </div>
             </div>
@@ -58,9 +57,11 @@
          <div class="col-lg-12">
             <nav class="header__menu mobile-menu">
                <ul>
-                  <li class="active"><a href="./index.php">Home</a></li>
-                  <li><a href="./about.php">About</a></li>
-                  <li><a href="./blog.php">Blog</a></li>
+                  <li class="active"><a href="./index.php"><i class="fa fa-home"></i> Home</a></li>
+                  <li><a href="./about.php"><i class="fa fa-book"></i> About</a></li>
+                  <li><a href="./blog.php"><i class="fa fa-pencil"></i> Blog</a></li>
+                  <li><a href="./blog.php"><i class="fa fa-user"></i> Pengguna</a></li>
+                  <li><a href="./blog.php"><i class="fa fa-spoon"></i> Makanan</a></li>
                </ul>
             </nav>
          </div>
