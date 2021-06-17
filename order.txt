@@ -1,0 +1,43 @@
+---------------------------------------------------------------------------------------------------------------------------
+Id	| 	product		|	price		| 	waktu	 |	Nama CS		|	nama pelanggan	  |
+---------------------------------------------------------------------------------------------------------------------------
+1.	|	Cappuchino	|	Rp.10.000	|     20-12-2020 |	dika		|	username	  |
+---------------------------------------------------------------------------------------------------------------------------
+2.	|	Mie		|	Rp.10.000	|     20-12-2020 |	gisanda		|	username	  |
+---------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------
+Id	| 	product		|	price		| 
+---------------------------------------------------------
+1.	|	Cappuchino	|	Rp.10.000	|     
+---------------------------------------------------------
+2.	|	Mie		|	Rp.10.000	|     
+---------------------------------------------------------
+
+CREATE TABLE orderrs(
+    id_order int(5) not null AUTO_INCREMENT,
+    id_users int(5),
+    id_makanan int(5),
+    id_minuman int(5),
+    PRIMARY key(id_order),
+    FOREIGN key(id_users) REFERENCES users(id_users),
+    FOREIGN KEY(id_makanan) REFERENCES makanan(id_makanan),
+    FOREIGN KEY(id_minuman) REFERENCES minuman(id_minuman)
+);
+
+----------------------------------------
+SELECT orders.id_order,users.username,makanan.makanan AS nama_makanan,makanan.harga, minuman.minuman As nama_minuman, minuman.harga
+    from orders 
+    left JOIN makanan on orders.id_makanan = makanan.id_makanan
+    left JOIN minuman on orders.id_minuman = minuman.id_minuman
+    left JOIN users on orders.id_users = users.id_users
+
+---------------------------------------------
+insert into
+
+INSERT INTO orderrs(`id_order`,`id_users`,`username`,`id_makanan`,`nama_makanan`,`harga_makanan`,`id_minuman`,`nama_minuman`,`harga_minuman`)
+SELECT orderrs.id_order,users.id_users,users.username,makanan.id_makanan,makanan.makanan AS nama_makanan,makanan.harga,minuman.id_minuman, minuman.minuman As nama_minuman, minuman.harga
+    from orderrs 
+    left JOIN makanan on orderrs.id_makanan = makanan.id_makanan
+    left JOIN minuman on orderrs.id_minuman = minuman.id_minuman
+    left JOIN users on orderrs.id_users = users.id_users
