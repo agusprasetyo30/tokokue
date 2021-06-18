@@ -7,7 +7,6 @@
    $kategori = query("SELECT * FROM kategori");
 ?>
 
-
 <?php include_once('./layouts/header.php') ?>
 
 <div class="card">
@@ -44,17 +43,18 @@
                
                <div class="form-group text-left ">
                   <label for="gambar" class="text-left">Upload Gambar</label>
-                  <input type="file"  accept="image/*" name="image" id="file" class="form-control" style="padding-bottom: 35px;" onchange="loadFile(event)" >
+                  <input type="file"  accept="image/*" name="gambar" id="gambar" class="form-control" style="padding-bottom: 35px;" onchange="loadFile(event)" >
+                  <small style="font-size: 10px;">*Maksimal 5 mb</small>
                   
                   <div class="row mt-2">
                      <div class="col-md-6">
                         <img id="output" width="100%" class="image-preview mt-2 d-inline">
                      </div>
                      <div class="col-md-6">
-                        <input type="submit" name="simpan" class="btn btn-success float-right" value="Simpan">
+                        <button type="submit" name="simpan" class="btn btn-success float-right">Simpan</button>
+                        <a href="makanan.php" class="btn btn-warning float-right mr-2">Back</a>
                      </div>
                   </div>
-
                </div>
                
                
@@ -69,32 +69,28 @@
       </div>
    </div>
 </div>
+
 <?php 
-
    include_once('./layouts/footer.php');
-   
-   if (isset($_POST['simpan'])) {
-      echo "<pre>";
-         var_dump($_POST);
-      echo "</pre>";
 
-      // if (tambahPengguna($_POST) > 0) {
-         // echo "
-         //    <script>
-         //    alert('Data berhasil ditambahkan');
-         //    // document.location.href = 'pengguna.php';
-         //    </script>
-         // ";
-      // } else {
-      //    echo "
-      //    <script>
-      //    alert('Data gagal ditambahkan');
-      //    // document.location.href = 'editanggota.php';            
-      //    </script>
-      //    ";
-      //    echo("<br>");
-      //    echo mysqli_error($koneksi);        
-      // }
+   if (isset($_POST['simpan'])) {
+      if (tambahMakanan($_POST) > 0) {
+         echo "
+            <script>
+            alert('Data berhasil ditambahkan');
+            document.location.href = 'makanan.php';
+            </script>
+         ";
+      } else {
+         echo "
+         <script>
+         alert('Data gagal ditambahkan');
+         // document.location.href = 'editanggota.php';            
+         </script>
+         ";
+         echo("<br>");
+         echo mysqli_error($koneksi);        
+      }
    }
 ?>
 

@@ -13,8 +13,8 @@
    <title>ROLA CAKE AND BAKERY</title>
 
    <!-- Google Font -->
-   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+   <!-- <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"> -->
 
    <!-- Css Styles -->
    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -28,9 +28,9 @@
    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
    <link rel="stylesheet" href="css/style.css" type="text/css">
    <link rel="stylesheet" href="css/select2/select2.min.css" type="text/css">
-   <!-- <link rel="stylesheet" href="css/summernote/summernote-bs4.min.css" type="text/css"> -->
+   <link rel="stylesheet" href="css/summernote/summernote.min.css" type="text/css">
 <!-- include summernote css/js -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<!-- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet"> -->
    <style>
       .foto:hover {
          transition: 0.4s all;
@@ -57,6 +57,8 @@
          <div class="row">
             <div class="col-lg-12">
                <div class="header__top__inner">
+               Hallo, Namamu
+
                <div class="header__logo">
                   <a href="./index.php"><img src="img/logokue.png" alt=""></a>
                </div>

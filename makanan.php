@@ -1,7 +1,7 @@
 <?php
-  include('./data/function.php');
+   include('./data/function.php');
 
-  $title = "Makanan";
+   $title = "Makanan";
 
 //   $data_pengguna = pagination(5, "SELECT * FROM users");
 ?>
@@ -19,7 +19,7 @@
    <div class="col-md-3">
       <div class="card">
          <div class="card-body foto">
-            <a href="#">
+            <a href="show-makanan.php?id=">
                <img src="./img/icecream1.jpg" width="100%" height="250px" class="img-rounded">
                <div class="text-center m-2 text-dark">
                   Ini Es Kerim

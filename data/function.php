@@ -1,4 +1,5 @@
 <?php
+    ini_set('display_errors', 1);
     include('db.php');
     include('pagination.php');
 
@@ -118,13 +119,42 @@
         return mysqli_affected_rows($koneksi);
     }
 
+    function tambahMakanan($post)
+    {
+        global $koneksi;
+
+        $nama = $post['nama'];
+        $harga = $post['harga'];
+        $kategori = $post['kategori'];
+        $resep = $post['resep'];
+
+        $gambar = uploadGambarMakanan($nama);
+        
+        if (!$gambar) {
+            return false;
+        }
+
+        $query = "INSERT INTO makanan VALUES(NULL, '$nama', '$harga', '$gambar', '$resep')";
+        
+        if (mysqli_query($koneksi, $query)) {
+            $makanan_id = mysqli_insert_id($koneksi);
+
+            for ($i=0; $i < count($kategori); $i++) { 
+                $kategori_makanan = "INSERT INTO kategori_makanan VALUES(NULL, $makanan_id, $kategori[$i])";
+                mysqli_query($koneksi, $kategori_makanan);
+            }
+        }
+
+        return mysqli_affected_rows($koneksi);       
+    }
+
     /**
      * Undocumented function
      *
      * @param [type] $judul
      * @return void
      */
-    function uploadbarang($judul){
+    function uploadGambarMakanan($judul = null){
         $nama_file = $_FILES['gambar']['name'];
         $ukuran_file = $_FILES['gambar']['size'];
         $error = $_FILES['gambar']['error'];
@@ -151,7 +181,7 @@
             return false;
         }
         //cek kapasitas file yang diupload dala bentuk byte 1 MB = 1000000 Byte
-        if ($ukuran_file > 10000000) {
+        if ($ukuran_file > 5000000) {
             echo"
                 <script>
                     alert('Ukuran file terlalu besar');
@@ -170,9 +200,17 @@
         $namafilebaru .= ".";
         $namafilebaru .= $pecah_gambar;
 
-        move_uploaded_file($file_tmp, '../img/makanan/'.$namafilebaru);
+        $location = dirname(getcwd()) . '/tubes-uas/img/makanan/' . $namafilebaru;
+        // $location = '../img/makanan/' . $namafilebaru;
+
+        if(move_uploaded_file($file_tmp, $location)) {
+            return $namafilebaru;
+        } else {
+            echo 'something wrong';
+            return false;
+        }
 
         //mereturn nama file agar masuk ke $gambar == upload()
-        return $namafilebaru;
+        // return $namafilebaru;
     }
 ?>
