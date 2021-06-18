@@ -151,6 +151,72 @@
     /**
      * Undocumented function
      *
+     * @param [type] $post
+     * @return void
+     */
+    function editMakanan($post)
+    {
+        global $koneksi;
+
+        $id_makanan = $post['id_makanan'];
+        $nama = $post['nama'];
+        $harga = $post['harga'];
+        $kategori = $post['kategori'];
+        $resep = $post['resep'];
+        $gambar_lama = $post['gambar_lama'];
+
+        if ($_FILES['gambar']['error'] === 4) {
+            $gambar = $gambar_lama;
+        } else {
+            if (hapusGambarMakanan($id_makanan)) {
+                $gambar = uploadGambarMakanan($nama);
+            }
+        }
+
+        // Update makanan
+        $query = "UPDATE makanan SET 
+            nama    = '$nama',
+            harga   = '$harga',
+            resep   = '$resep',
+            gambar  = '$gambar' WHERE id = '$id_makanan'";
+
+        // Dignakan untuk menghapus many to many kategori
+        $kategori_hapus = "DELETE kategori_makanan WHERE id_makanan = '$id_makanan'";
+        mysqli_query($koneksi, $kategori_hapus);
+
+        // Menyimpan kategori yang baru/sesuai inputan
+        for ($i=0; $i < count($kategori); $i++) { 
+            $kategori_makanan = "INSERT INTO kategori_makanan VALUES(NULL, $id_makanan, $kategori[$i])";
+            mysqli_query($koneksi, $kategori_makanan);
+        }
+
+        // Eksekusi update makanan
+        mysqli_query($koneksi, $query);
+
+        return mysqli_affected_rows($koneksi);
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param [type] $id
+     * @return void
+     */
+    function hapusMakanan($id)
+    {
+        global $koneksi;
+
+        $query = "DELETE from makanan where id = '$id' ";
+
+        if (hapusGambarMakanan($id)) {
+            mysqli_query($koneksi, $query);
+            return mysqli_affected_rows($koneksi);
+        }
+    }
+
+    /**
+     * Undocumented function
+     *
      * @param [type] $judul
      * @return void
      */
@@ -212,5 +278,26 @@
 
         //mereturn nama file agar masuk ke $gambar == upload()
         // return $namafilebaru;
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param [type] $id_makanan
+     * @return void
+     */
+    function hapusGambarMakanan($id_makanan)
+    {
+        $query = query("SELECT gambar FROM makanan WHERE id = '$id_makanan'")[0];
+
+        if ($query['gambar'] == null) {
+            return true;
+            
+        } else {
+            $location = dirname(getcwd()) . '/tubes-uas/img/makanan/' . $query['gambar'];
+            // $location = '../img/makanan/' . $namafilebaru;
+            unlink($location);
+            return true;
+        }
     }
 ?>

@@ -52,7 +52,7 @@
                      </div>
                      <div class="col-md-6">
                         <button type="submit" name="simpan" class="btn btn-success float-right">Simpan</button>
-                        <a href="makanan.php" class="btn btn-warning float-right mr-2">Back</a>
+                        <a href="makanan.php" class="btn btn-warning float-right mr-2"><i class="fa fa-undo"></i> Back</a>
                      </div>
                   </div>
                </div>
