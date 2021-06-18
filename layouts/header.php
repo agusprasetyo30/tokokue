@@ -89,11 +89,6 @@
          </div>
       </div>
    </header>
-      <?php
-         if ($breadcrumb == true) {
-            include_once('breadcrumb.php');
-         }
-      ?>
       <div class="breadcrumb-option p-5">
       <div class="container">
          <div class="row text-center">

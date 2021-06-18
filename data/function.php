@@ -260,7 +260,7 @@
             $namafilebaru = uniqid();
         
         } else {
-            $namafilebaru = $judul;
+            $namafilebaru = trim((string)$judul, ' ');
         }
 
         $namafilebaru .= ".";
