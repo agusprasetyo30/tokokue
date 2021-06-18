@@ -2,7 +2,7 @@
       </div>
       </div>
    </div>
-   <section class="about spad">
+   <!-- <section class="about spad">
       <div class="container">
       <div class="row">
          <div class="col-lg-12">
@@ -10,7 +10,7 @@
          </div>
       </div>
       </div>
-   </section>
+   </section> -->
 
    <footer class="footer set-bg" data-setbg="img/footer-bg.jpg">
       <div class="container">

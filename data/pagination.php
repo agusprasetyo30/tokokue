@@ -76,12 +76,12 @@
 
       // Untuk tombol previous
       if ($halaman_current > 1) {
-      $link_previous = "href='?menu=" . $menu . "&page=$previous'";
+      $link_previous = "href='?category=" . $menu . "&page=$previous'";
       }
 
       // Untuk tombol next
       if ($halaman_current < $total_halaman) {
-      $link_next = "href='?menu=" . $menu . "&page=$next'";
+      $link_next = "href='?category=" . $menu . "&page=$next'";
       }
 
       $previous = "<nav>" .
@@ -91,9 +91,9 @@
 
       for ($i=1; $i <= $total_halaman; $i++) { 
       if ($next - 1 == $i) {
-         $number_link .= "<li class='page-item active'><a class='page-link' href='?menu=" . $menu . "&page=" . $i . "'>" . $i . "</a></li>";
+         $number_link .= "<li class='page-item active'><a class='page-link' href='?category=" . $menu . "&page=" . $i . "'>" . $i . "</a></li>";
       } else {
-         $number_link .= "<li class='page-item'><a class='page-link' href='?menu=" . $menu . "&page=" . $i . "'>" . $i . "</a></li>";
+         $number_link .= "<li class='page-item'><a class='page-link' href='?category=" . $menu . "&page=" . $i . "'>" . $i . "</a></li>";
       }
       }
       

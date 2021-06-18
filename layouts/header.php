@@ -89,11 +89,11 @@
          </div>
       </div>
    </header>
-      <div class="breadcrumb-option p-5">
+      <div class="<?= $breadcrumb_visibility == 'none' ? '' : 'breadcrumb-option p-5' ?>  ">
       <div class="container">
          <div class="row text-center">
-         <div class="col-lg-12 col-md-12 col-sm-12">
+         <div class="col-lg-12 col-md-12 col-sm-12 ">
             <!-- Untuk memposisikan lokasi dari header sesuai keinginan -->
-            <div class="breadcrumb__text mb-3 <?= $header_center == true ? 'text-center' : 'text-left' ?>">
+            <div class="breadcrumb__text mb-3 <?= $breadcrumb_visibility == 'none' ? 'd-none':'' ?> <?= $header_center == true ? 'text-center' : 'text-left' ?>">
                <h2><?= $title != null ? $title : 'No Title Yet' ?></h2>
             </div>
