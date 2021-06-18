@@ -103,6 +103,12 @@
         return mysqli_affected_rows($koneksi);       
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param [type] $username
+     * @return void
+     */
     function hapusPengguna($username)
     {
         global $koneksi;
@@ -110,5 +116,63 @@
         $query = "DELETE from users where username = '$username' ";
         mysqli_query($koneksi, $query);
         return mysqli_affected_rows($koneksi);
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param [type] $judul
+     * @return void
+     */
+    function uploadbarang($judul){
+        $nama_file = $_FILES['gambar']['name'];
+        $ukuran_file = $_FILES['gambar']['size'];
+        $error = $_FILES['gambar']['error'];
+        $file_tmp = $_FILES['gambar']['tmp_name'];
+
+        if ($error === 4) { 
+            echo "
+            <script>
+                alert('Tidak ada gambar yang diupload');
+            </script>
+            ";
+            return false;
+        }
+
+        $jenis_gambar = ['jpg', 'jpeg', 'png', 'gif','JPG']; //jenis gambar yang boleh diinputkan
+        $pecah_gambar = explode(".", $nama_file); //Memecah nama file dengan jenis gambar
+        $pecah_gambar = strtolower(end($pecah_gambar)); //mengambil data array paling belakang
+        if (!in_array($pecah_gambar, $jenis_gambar)) {
+            echo "
+                <script>
+                    alert('Yang anda upload bukan file gambar');
+                </script>
+            ";
+            return false;
+        }
+        //cek kapasitas file yang diupload dala bentuk byte 1 MB = 1000000 Byte
+        if ($ukuran_file > 10000000) {
+            echo"
+                <script>
+                    alert('Ukuran file terlalu besar');
+                </script>
+            ";
+            return false;
+        }
+
+        if ($judul == null) {
+            $namafilebaru = uniqid();
+        
+        } else {
+            $namafilebaru = $judul;
+        }
+
+        $namafilebaru .= ".";
+        $namafilebaru .= $pecah_gambar;
+
+        move_uploaded_file($file_tmp, '../img/makanan/'.$namafilebaru);
+
+        //mereturn nama file agar masuk ke $gambar == upload()
+        return $namafilebaru;
     }
 ?>

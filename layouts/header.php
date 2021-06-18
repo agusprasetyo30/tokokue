@@ -3,7 +3,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
    <head>
    <meta charset="UTF-8">
    <meta name="description" content="Cake Template">
@@ -27,14 +27,23 @@
    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
    <link rel="stylesheet" href="css/style.css" type="text/css">
-
+   <link rel="stylesheet" href="css/select2/select2.min.css" type="text/css">
+   <!-- <link rel="stylesheet" href="css/summernote/summernote-bs4.min.css" type="text/css"> -->
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
    <style>
       .foto:hover {
          transition: 0.4s all;
          padding: 1.25rem 0.25rem 1.25rem 0.25rem;
       }
 
-      
+      .footer {
+         padding-bottom: 30px;
+      }
+
+      .nice-select {
+         display: none;
+      }
    </style>
    </head>
 
