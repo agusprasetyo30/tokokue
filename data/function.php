@@ -34,7 +34,7 @@
         $username = $post['username'];
         $password = md5($post['password']);
 
-        $query = mysqli_query($koneksi, "SELECT * FROM users WHERE username = '$username' AND password = '$password'");
+        $query = mysqli_query($koneksi, "SELECT * FROM users WHERE username = '$username' AND password = '$password' AND status = 'AKTIF'");
         $cek = mysqli_num_rows($query);
 
         // Jika pengguna sesuai input
