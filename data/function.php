@@ -22,6 +22,57 @@
     }
 
     /**
+     * Process login pengguna
+     *
+     * @param [type] $post
+     * @return void
+     */
+    function login($post)
+    {
+        global $koneksi;
+
+        $username = $post['username'];
+        $password = md5($post['password']);
+
+        $query = mysqli_query($koneksi, "SELECT * FROM users WHERE username = '$username' AND password = '$password'");
+        $cek = mysqli_num_rows($query);
+
+        // Jika pengguna sesuai input
+        if ($cek == 1) {
+            $data = mysqli_fetch_assoc($query);
+            
+            // Mengambil data dan dimasukan ke dalam session
+            $_SESSION['id'] = $data['id'];
+            $_SESSION['nama'] = $data['nama'];
+            $_SESSION['username'] = $data['username'];
+
+            return true;
+        
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Proses logout pengguna
+     *
+     * @param [type] $session
+     * @return void
+     */
+    function logout($session)
+    {
+        if ($session != NULL) {
+            session_start();
+            session_destroy();
+            session_unset();
+            
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * digunakan untuk menambahkan pengguna baru
      *
      * @param [type] $post
@@ -57,7 +108,7 @@
     }
 
     /**
-     * Undocumented function
+     * Digunakan untuk mengedit pengguna
      *
      * @param [type] $post
      * @return void
@@ -101,11 +152,11 @@
         }
 
         mysqli_query($koneksi, $query);
-        return mysqli_affected_rows($koneksi);       
+        return mysqli_affected_rows($koneksi);
     }
 
     /**
-     * Undocumented function
+     * digunakan untuk menghapus pengguna berdasarkan username
      *
      * @param [type] $username
      * @return void
@@ -119,6 +170,12 @@
         return mysqli_affected_rows($koneksi);
     }
 
+    /**
+     * Digunakan untuk menambah makanan
+     *
+     * @param [type] $username
+     * @return void
+     */
     function tambahMakanan($post)
     {
         global $koneksi;
@@ -128,6 +185,7 @@
         $kategori = $post['kategori'];
         $resep = $post['resep'];
 
+        // memanggil function untuk upload gambar
         $gambar = uploadGambarMakanan($nama);
         
         if (!$gambar) {
@@ -137,8 +195,10 @@
         $query = "INSERT INTO makanan VALUES(NULL, '$nama', '$harga', '$gambar', '$resep')";
         
         if (mysqli_query($koneksi, $query)) {
+            // mengambil ID terakhir dari data yang baru ditambahkan
             $makanan_id = mysqli_insert_id($koneksi);
 
+            // melakukan perulangan untuk menambahkan ke dalam tabel M-M kategori makanan
             for ($i=0; $i < count($kategori); $i++) { 
                 $kategori_makanan = "INSERT INTO kategori_makanan VALUES(NULL, $makanan_id, $kategori[$i])";
                 mysqli_query($koneksi, $kategori_makanan);
@@ -149,7 +209,7 @@
     }
 
     /**
-     * Undocumented function
+     * Digunakan untuk mengedit makanan
      *
      * @param [type] $post
      * @return void
@@ -165,9 +225,11 @@
         $resep = $post['resep'];
         $gambar_lama = $post['gambar_lama'];
 
+        // jika tidak melakukan upload gambar
         if ($_FILES['gambar']['error'] === 4) {
             $gambar = $gambar_lama;
         } else {
+            // menghapus gambar lama dan melakukan upload gambar baru
             if (hapusGambarMakanan($id_makanan)) {
                 $gambar = uploadGambarMakanan($nama);
             }
@@ -197,7 +259,7 @@
     }
 
     /**
-     * Undocumented function
+     * Digunakan untuk menghapus makanan
      *
      * @param [type] $id
      * @return void
@@ -215,7 +277,7 @@
     }
 
     /**
-     * Undocumented function
+     * Digunakan untuk mengupload gambar makanan sesuai dengan data yg diupload
      *
      * @param [type] $judul
      * @return void
@@ -281,7 +343,7 @@
     }
 
     /**
-     * Undocumented function
+     * Digunakan untuk menghapus gambar makanan sesuai dengan ID yang dipilih
      *
      * @param [type] $id_makanan
      * @return void

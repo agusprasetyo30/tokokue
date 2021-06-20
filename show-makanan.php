@@ -20,9 +20,20 @@
    $title = $makanan['nama'];
    // var_dump($a);
    // var_dump(json_encode($makanan_kategori));
+   
+   include_once('./layouts/header.php');
+
+   // yang belum login akan diarahkan ke halaman login
+   if (!isset($_SESSION['id'])) {
+      echo '
+         <script>
+            alert("Login dulu..");
+            window.location.href = "./login.php";
+         </script>
+      ';
+   }
 ?>
 
-<?php include_once('./layouts/header.php') ?>
 
 <div class="card">
       <div class="card-body">

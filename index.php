@@ -4,10 +4,10 @@
   $breadcrumb_visibility = 'none';
 
   if ($_GET['category'] == null) {
-    $makanan = pagination(4, "SELECT * FROM makanan");
+    $makanan = pagination(8, "SELECT * FROM makanan");
   
   } else {
-    $makanan = pagination(4, "SELECT m.*, k.nama FROM makanan m 
+    $makanan = pagination(8, "SELECT m.*, k.nama FROM makanan m 
       INNER JOIN kategori_makanan km on m.id = km.id_makanan
       INNER JOIN kategori k ON km.id_kategori = k.id
       WHERE k.nama = '$_GET[category]'");
@@ -120,7 +120,9 @@
         </div>
         <?php } ?>
         <div class="text-center w-100 mt-3">
+
           <?= paginationNumber($_GET['category']) ?>
+        
         </div>
       </div>
     </div>

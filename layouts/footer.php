@@ -2,15 +2,6 @@
       </div>
       </div>
    </div>
-   <!-- <section class="about spad">
-      <div class="container">
-      <div class="row">
-         <div class="col-lg-12">
-
-         </div>
-      </div>
-      </div>
-   </section> -->
 
    <footer class="footer set-bg" data-setbg="img/footer-bg.jpg">
       <div class="container">
@@ -62,3 +53,21 @@
 </body>
 
 </html>
+
+<?php
+
+   if (isset($_POST['logout'])) {
+         echo "
+            <script>
+            document.location.href = './';
+            </script>
+         ";
+      // if (logout($_SESSION['id'])) {
+      //    echo "
+      //       <script>
+      //       document.location.href = './';
+      //       </script>
+      //    ";
+      // };
+   }
+?>

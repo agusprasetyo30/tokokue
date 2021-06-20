@@ -3,11 +3,22 @@
 
    $title = "Makanan";
 
-  $data_makanan = pagination(8, "SELECT * FROM makanan");
+   $data_makanan = pagination(8, "SELECT * FROM makanan");
+
+   include_once('./layouts/header.php');
+
+   // yang belum login akan diarahkan ke halaman login
+   if (!isset($_SESSION['id'])) {
+      echo '
+         <script>
+            alert("Login dulu..");
+            window.location.href = "./login.php";
+         </script>
+      ';
+   }
 ?>
 
 
-<?php include_once('./layouts/header.php') ?>
 
 <div class="row">
    <div class="col-md-12">

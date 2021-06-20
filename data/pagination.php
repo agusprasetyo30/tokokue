@@ -37,7 +37,7 @@
    }
 
    /**
-    * Undocumented function
+    * Mengambil nomer sesuai dengan jumlah data yang ditampilkan
     *
     * @return integer
     */
@@ -49,7 +49,7 @@
    }
    
    /**
-    * Undocumented function
+    * Menampilkan nomer halaman current sesuai dengan data yg dipilih
     *
     * @return integer
     */
@@ -61,7 +61,7 @@
    }
 
    /**
-    * Undocumented function
+    * Menampilkan semua data nomer pagination
     *
     * @param [type] $menu
     * @return string
@@ -76,12 +76,12 @@
 
       // Untuk tombol previous
       if ($halaman_current > 1) {
-      $link_previous = "href='?category=" . $menu . "&page=$previous'";
+        $link_previous = "href='?category=" . $menu . "&page=$previous'";
       }
 
       // Untuk tombol next
       if ($halaman_current < $total_halaman) {
-      $link_next = "href='?category=" . $menu . "&page=$next'";
+        $link_next = "href='?category=" . $menu . "&page=$next'";
       }
 
       $previous = "<nav>" .
@@ -90,11 +90,11 @@
       
 
       for ($i=1; $i <= $total_halaman; $i++) { 
-      if ($next - 1 == $i) {
-         $number_link .= "<li class='page-item active'><a class='page-link' href='?category=" . $menu . "&page=" . $i . "'>" . $i . "</a></li>";
-      } else {
-         $number_link .= "<li class='page-item'><a class='page-link' href='?category=" . $menu . "&page=" . $i . "'>" . $i . "</a></li>";
-      }
+        if ($next - 1 == $i) {
+            $number_link .= "<li class='page-item active'><a class='page-link' href='?category=" . $menu . "&page=" . $i . "'>" . $i . "</a></li>";
+        } else {
+            $number_link .= "<li class='page-item'><a class='page-link' href='?category=" . $menu . "&page=" . $i . "'>" . $i . "</a></li>";
+        }
       }
       
       $next = "<li class='page-item'> <a class='page-link'" . $link_next . ">Next</a>";
