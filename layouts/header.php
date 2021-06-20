@@ -120,7 +120,7 @@
       </div>
    </header>
       <div class="<?= $breadcrumb_visibility == 'none' ? '' : 'breadcrumb-option p-5' ?>  ">
-      <div class="container">
+      <div class="container-fluid">
          <div class="row text-center">
          <div class="col-lg-12 col-md-12 col-sm-12 ">
             <!-- Untuk memposisikan lokasi dari header sesuai keinginan -->

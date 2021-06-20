@@ -1,5 +1,5 @@
 <?php
-    // ini_set('display_errors', 1);
+    ini_set('display_errors', 0);
     include('db.php');
     include('pagination.php');
 
@@ -18,6 +18,7 @@
         while ($data = mysqli_fetch_assoc($result)) {
             $rows[] = $data;
         }
+
         return $rows;
     }
 

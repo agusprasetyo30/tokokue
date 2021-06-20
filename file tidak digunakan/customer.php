@@ -102,13 +102,15 @@
   <?php
   include "db.php";
   include "makanan.php";
+
   $query = "SELECT orders.id_order,users.username,makanan.makanan AS nama_makanan,orders.jumlah
     from orders 
     left JOIN makanan on orders.id_makanan = makanan.id_makanan
     left JOIN users on orders.id_users = users.id_users";
+
   $result = mysqli_query($con, $query);
 
-  if (mysqli_num_rows($result) >0) {
+  if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
   ?>
       <tr>

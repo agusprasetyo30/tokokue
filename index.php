@@ -4,10 +4,10 @@
   $breadcrumb_visibility = 'none';
 
   if ($_GET['category'] == null) {
-    $makanan = pagination(8, "SELECT * FROM makanan");
+    $makanan = pagination(8, "SELECT m.* FROM makanan m");
   
   } else {
-    $makanan = pagination(8, "SELECT m.*, k.nama FROM makanan m 
+    $makanan = pagination(8, "SELECT m.* FROM makanan m 
       INNER JOIN kategori_makanan km on m.id = km.id_makanan
       INNER JOIN kategori k ON km.id_kategori = k.id
       WHERE k.nama = '$_GET[category]'");
@@ -15,6 +15,7 @@
 ?>
 
 <?php include_once('./layouts/header.php') ?>
+
   <section class="hero">
     <div class="hero__slider owl-carousel">
       <div class="hero__item set-bg" data-setbg="img/background1.jpg">
