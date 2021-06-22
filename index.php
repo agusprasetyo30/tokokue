@@ -50,7 +50,7 @@
         <div class="categories__slider owl-carousel">
           <div class="categories__item">
             <div class="categories__item__icon">
-              <a href="index.php?category=Roti Cup">
+              <a href="index.php?category=Kue Cup">
                 <span class="flaticon-029-cupcake-3"></span>
                 <h5>Kue Cup</h5>
               </a>

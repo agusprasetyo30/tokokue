@@ -32,6 +32,7 @@
          </script>
       ';
    }
+
 ?>
 
 <div class="card">
@@ -118,7 +119,7 @@
          </script>
          ";
          echo("<br>");
-         echo mysqli_error($koneksi);        
+         var_dump(mysqli_error($koneksi));        
       }
    }
 ?>

@@ -231,11 +231,34 @@
             $gambar = $gambar_lama;
         } else {
             // menghapus gambar lama dan melakukan upload gambar baru
-            if (hapusGambarMakanan($id_makanan)) {
-                $gambar = uploadGambarMakanan($nama);
+            hapusGambarMakanan($id_makanan);
+            $gambar = uploadGambarMakanan($nama);
+        }
+
+        $query_kategori_makanan = mysqli_query($koneksi, "SELECT * FROM kategori_makanan WHERE id_makanan = '$id_makanan'" );
+        $cek = mysqli_num_rows($query_kategori_makanan);
+
+        // Dicek apakah ada data kategori makanan atau tidak, kalau ada dihapus semua untuk edit
+        if ($cek > 0) {
+            // Dignakan untuk menghapus many to many kategori
+            $kategori_hapus = "DELETE FROM kategori_makanan WHERE id_makanan = '$id_makanan'";
+            $q1 = mysqli_query($koneksi, $kategori_hapus);
+            
+            // Menyimpan kategori yang baru/sesuai inputan
+            for ($i=0; $i < count($kategori); $i++) { 
+                $kategori_makanan = "INSERT INTO kategori_makanan VALUES(NULL, $id_makanan, $kategori[$i])";
+                $q2 = mysqli_query($koneksi, $kategori_makanan);
+            }
+            
+        } else {
+            // Menyimpan kategori yang baru/sesuai inputan
+            for ($i=0; $i < count($kategori); $i++) { 
+                $kategori_makanan = "INSERT INTO kategori_makanan VALUES(NULL, $id_makanan, $kategori[$i])";
+                $q2 = mysqli_query($koneksi, $kategori_makanan);
             }
         }
 
+        // Eksekusi update makanan
         // Update makanan
         $query = "UPDATE makanan SET 
             nama    = '$nama',
@@ -243,18 +266,10 @@
             resep   = '$resep',
             gambar  = '$gambar' WHERE id = '$id_makanan'";
 
-        // Dignakan untuk menghapus many to many kategori
-        $kategori_hapus = "DELETE kategori_makanan WHERE id_makanan = '$id_makanan'";
-        mysqli_query($koneksi, $kategori_hapus);
-
-        // Menyimpan kategori yang baru/sesuai inputan
-        for ($i=0; $i < count($kategori); $i++) { 
-            $kategori_makanan = "INSERT INTO kategori_makanan VALUES(NULL, $id_makanan, $kategori[$i])";
-            mysqli_query($koneksi, $kategori_makanan);
+        $q3 = mysqli_query($koneksi, $query);
+        if ($q3) {
+            return true;
         }
-
-        // Eksekusi update makanan
-        mysqli_query($koneksi, $query);
 
         return mysqli_affected_rows($koneksi);
     }
@@ -271,10 +286,9 @@
 
         $query = "DELETE from makanan where id = '$id' ";
 
-        if (hapusGambarMakanan($id)) {
-            mysqli_query($koneksi, $query);
-            return mysqli_affected_rows($koneksi);
-        }
+        hapusGambarMakanan($id);
+        mysqli_query($koneksi, $query);
+        return mysqli_affected_rows($koneksi);
     }
 
     /**
@@ -323,7 +337,7 @@
             $namafilebaru = uniqid();
         
         } else {
-            $namafilebaru = trim((string)$judul, ' ');
+            $namafilebaru = str_replace(' ', '', (string)$judul);
         }
 
         $namafilebaru .= ".";
@@ -353,13 +367,11 @@
     {
         $query = query("SELECT gambar FROM makanan WHERE id = '$id_makanan'")[0];
 
-        if ($query['gambar'] == null) {
-            return true;
-            
-        } else {
+        if ($query['gambar'] != null) {
             $location = dirname(getcwd()) . '/tubes-uas/img/makanan/' . $query['gambar'];
             // $location = '../img/makanan/' . $namafilebaru;
             unlink($location);
+
             return true;
         }
     }
